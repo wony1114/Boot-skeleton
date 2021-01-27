@@ -12,5 +12,9 @@ public class Reply {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "rep_num") private String repNum;
     @Column(name = "content") private String content;
-    @Column(name = "art_num") private String artNum;
+
+
+    @ManyToOne
+    @JoinColumn(name = "art_num")
+    private Article article;
 }

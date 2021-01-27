@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -21,9 +22,13 @@ public class QSubject extends EntityPathBase<Subject> {
 
     public final StringPath description = createString("description");
 
+    public final ListPath<Grade, QGrade> gradeList = this.<Grade, QGrade>createList("gradeList", Grade.class, QGrade.class, PathInits.DIRECT2);
+
     public final StringPath subject = createString("subject");
 
     public final NumberPath<Integer> subNum = createNumber("subNum", Integer.class);
+
+    public final ListPath<com.example.demo.sym.service.Teacher, com.example.demo.sym.service.QTeacher> teacherList = this.<com.example.demo.sym.service.Teacher, com.example.demo.sym.service.QTeacher>createList("teacherList", com.example.demo.sym.service.Teacher.class, com.example.demo.sym.service.QTeacher.class, PathInits.DIRECT2);
 
     public QSubject(String variable) {
         super(Subject.class, forVariable(variable));

@@ -165,7 +165,7 @@ public class DummyGenerator {
 	}
 
 	public Grade makeGrade(int stuNum, int subNum) {
-		return new Grade(stuNum, subNum, makeExamdate(), makeScore().get(0));
+		return null; //new Grade(stuNum, subNum, makeExamdate(), makeScore().get(0));
 	}
 	/*********************************
 	 * Teacher Dummy Data Generator
@@ -174,11 +174,12 @@ public class DummyGenerator {
 
 	// String name, String password, String profileImage, int subNum)
 	public Teacher makeTeacher(int i) {
-		return new Teacher(
+		return null;
+		/*new Teacher(
 				makeUsername(),
 				"1", // 비번
 				Path.DEFAULT_PROFILE.toString(),
-				i); // makeTeacher() 를 1 ~ 5 까지만 생성하기 위해
+				i); // makeTeacher() 를 1 ~ 5 까지만 생성하기 위해*/
 	}// makeSubNum()
 	/*********************************
 	 * Manager Dummy Data Generator

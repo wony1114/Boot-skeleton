@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -17,24 +18,35 @@ public class QReply extends EntityPathBase<Reply> {
 
     private static final long serialVersionUID = 1480534706L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QReply reply = new QReply("reply");
 
-    public final StringPath artNum = createString("artNum");
+    public final QArticle article;
 
     public final StringPath content = createString("content");
 
     public final StringPath repNum = createString("repNum");
 
     public QReply(String variable) {
-        super(Reply.class, forVariable(variable));
+        this(Reply.class, forVariable(variable), INITS);
     }
 
     public QReply(Path<? extends Reply> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QReply(PathMetadata metadata) {
-        super(Reply.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QReply(PathMetadata metadata, PathInits inits) {
+        this(Reply.class, metadata, inits);
+    }
+
+    public QReply(Class<? extends Reply> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.article = inits.isInitialized("article") ? new QArticle(forProperty("article")) : null;
     }
 
 }

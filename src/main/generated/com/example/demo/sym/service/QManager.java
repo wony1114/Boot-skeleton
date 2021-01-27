@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -28,6 +29,8 @@ public class QManager extends EntityPathBase<Manager> {
     public final StringPath password = createString("password");
 
     public final StringPath profileImage = createString("profileImage");
+
+    public final ListPath<com.example.demo.uss.service.Student, com.example.demo.uss.service.QStudent> studentList = this.<com.example.demo.uss.service.Student, com.example.demo.uss.service.QStudent>createList("studentList", com.example.demo.uss.service.Student.class, com.example.demo.uss.service.QStudent.class, PathInits.DIRECT2);
 
     public QManager(String variable) {
         super(Manager.class, forVariable(variable));

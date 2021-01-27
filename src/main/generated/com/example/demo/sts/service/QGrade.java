@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -16,6 +17,8 @@ import com.querydsl.core.types.Path;
 public class QGrade extends EntityPathBase<Grade> {
 
     private static final long serialVersionUID = -602130360L;
+
+    private static final PathInits INITS = PathInits.DIRECT2;
 
     public static final QGrade grade1 = new QGrade("grade1");
 
@@ -29,20 +32,30 @@ public class QGrade extends EntityPathBase<Grade> {
 
     public final NumberPath<Integer> score = createNumber("score", Integer.class);
 
-    public final NumberPath<Integer> stuNum = createNumber("stuNum", Integer.class);
+    public final com.example.demo.uss.service.QStudent student;
 
-    public final NumberPath<Integer> subNum = createNumber("subNum", Integer.class);
+    public final QSubject subject;
 
     public QGrade(String variable) {
-        super(Grade.class, forVariable(variable));
+        this(Grade.class, forVariable(variable), INITS);
     }
 
     public QGrade(Path<? extends Grade> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QGrade(PathMetadata metadata) {
-        super(Grade.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QGrade(PathMetadata metadata, PathInits inits) {
+        this(Grade.class, metadata, inits);
+    }
+
+    public QGrade(Class<? extends Grade> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.student = inits.isInitialized("student") ? new com.example.demo.uss.service.QStudent(forProperty("student"), inits.get("student")) : null;
+        this.subject = inits.isInitialized("subject") ? new QSubject(forProperty("subject")) : null;
     }
 
 }

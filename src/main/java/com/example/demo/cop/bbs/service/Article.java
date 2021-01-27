@@ -2,6 +2,8 @@ package com.example.demo.cop.bbs.service;
 
 import lombok.*;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Entity
@@ -16,6 +18,9 @@ public class Article {
     @Column(name = "content") private String content;
     @Column(name = "count") private String count;
     @Column(name = "writer_num") private String writerNum;
+
+    @OneToMany(mappedBy = "article")
+    private List<Reply> replyList = new ArrayList<>();
 
     @Builder
     private Article(String title, String content, String count, String writerNum){

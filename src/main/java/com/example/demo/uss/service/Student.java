@@ -1,25 +1,23 @@
 package com.example.demo.uss.service;
 
+import com.example.demo.sts.service.Grade;
+import com.example.demo.sym.service.Manager;
 import lombok.*;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Component;
-
-import com.example.demo.cmm.enm.Path;
-
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Getter
 @Entity
 @ToString
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Table(name="students")
 public class Student {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "stu_num") private int stuNum;
-	@Column(name = "mgrNum") private int mgrNum;
 	@Column(name = "userid") private String userid;
 	@Column(name = "password") private String password;
 	@Column(name = "name") private String name;
@@ -28,6 +26,12 @@ public class Student {
 	@Column(name = "reg_date") private String regDate;
 	@Column(name = "profile_image") private String profileImage;
 
+	@ManyToOne
+	@JoinColumn(name = "mgr_num")
+	private Manager manager;
+
+	@OneToMany(mappedBy = "student")
+	private List<Grade> gradeList = new ArrayList<>();
 
 	public Student(String userid,
 				   String password,
@@ -43,18 +47,15 @@ public class Student {
 		this.gender = gender;
 		this.regDate = regDate;
 		this.profileImage = profileImage;
-		this.mgrNum = mgrNum;
 	}
 
 	@Builder
-	private Student(int mgrNum,
-					String userid,
+	private Student(String userid,
 					String password,
 					String name,
 					String birthday,
 					String regDate,
 					String profileImage){
-		this.mgrNum = mgrNum;
 		this.userid = userid;
 		this.password = password;
 		this.name = name;

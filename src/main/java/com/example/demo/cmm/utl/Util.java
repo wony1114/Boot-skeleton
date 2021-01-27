@@ -26,6 +26,6 @@ public class Util {
 	public static BiFunction<String,String, File> mkDir = File::new;
 	public static BiFunction<File,String, File> mkFile = File::new;
 	//public static Function<Pagination, Pagination> mkPage = t -> { }
-	
-	
+
+
 }

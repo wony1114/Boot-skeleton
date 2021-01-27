@@ -7,7 +7,7 @@ public enum Path {
         String result = "";
         switch (this) {
             case DEFAULT_PROFILE:
-                result = "https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-image-182145777.jpg";
+                result = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiuZGp08DDSD0P3PMfKSbbPu2nVmJdH74gHg&usqp=CAU";
                 break;
 
             default:

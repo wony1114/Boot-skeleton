@@ -1,5 +1,6 @@
 package com.example.demo.sym.service;
 
+import com.example.demo.sts.service.Subject;
 import lombok.*;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -15,24 +16,20 @@ import javax.persistence.*;
 @Table(name="teachers")
 public class Teacher {
 
-	public Teacher(String name, String password, String profileImage, int subNum) {
-		this.name = name;
-		this.password = password;
-		this.subNum = subNum;
-		this.profileImage = profileImage;
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "tea_num") private int teaNum;
-	@Column(name = "sub_num") private int subNum;
 	@Column(name = "name") private String name;
 	@Column(name = "password") private String password;
 	@Column(name = "profile_image") private String profileImage;
 
+	@ManyToOne
+	@JoinColumn(name = "sub_num")
+	private Subject subject;
+
 	@Builder
-	private Teacher(int subNum, String name, String password, String profileImage){
-		this.subNum = subNum;
+	private Teacher(String name, String password, String profileImage){
 		this.name = name;
 		this.password = password;
 		this.profileImage = profileImage;
