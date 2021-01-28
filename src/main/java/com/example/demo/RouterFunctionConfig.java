@@ -30,7 +30,7 @@ public class RouterFunctionConfig {
     }*/
     @GetMapping("/hello")
     public Map<?, ?> hello(){
-        Map<String, String> map = new HashMap<>();
+        var map = new HashMap<String, String>();
         map.put("a", "a");
         map.put("b", "b");
         System.out.println("React Boot connect Success");
